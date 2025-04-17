@@ -12,12 +12,6 @@ A full-stack web-based application to monitor server health, resource usage, and
 
 ---
 
-## 📸 Dashboard Preview
-
-![Dashboard Screenshot](assets/dashboard-preview.png)
-
----
-
 ## 📊 Features
 
 - **Real-Time Metrics:**  
@@ -49,8 +43,6 @@ A full-stack web-based application to monitor server health, resource usage, and
 
 ## 🛢️ Database Schema
 
-![Database Schema](assets/database-schema.png)
-
 Includes:
 - `servers`: Tracks each server's name, IP, location, status, created_at
 - `metrics`: Tracks RAM/CPU usage over time for each server
@@ -67,4 +59,3 @@ Includes:
 ---
 
 > 📌 This project satisfies the expected objectives around code quality, API design, optimization, modular architecture, and clean database integration — all backed by a user-friendly UI and scalable structure.
-
