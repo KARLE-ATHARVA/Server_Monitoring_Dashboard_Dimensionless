@@ -6,8 +6,8 @@ A full-stack web-based application to monitor server health, resource usage, and
 
 ## 🔧 Tech Stack
 
-- **Frontend:** React.js, Chart.js, CSS (professional white theme), Responsive UI
-- **Backend:** Python Flask, PostgreSQL, SQLAlchemy ORM
+- **Frontend:** React.js, Chart.js, CSS (professional white theme), Responsive UI  
+- **Backend:** Python Flask, PostgreSQL, SQLAlchemy ORM  
 - **Other:** `.env` for sensitive configurations, RESTful APIs, Modular structure
 
 ---
@@ -31,6 +31,18 @@ A full-stack web-based application to monitor server health, resource usage, and
 
 ---
 
+## 🖼️ Dashboard Preview
+
+![Dashboard UI](./Dashboard_1.jpeg)
+
+---
+
+## 🧱 Database Schema Diagram
+
+![Database Schema](./database.png)
+
+---
+
 ## 🧠 Code Design Principles Followed
 
 ✅ **Code Optimization:** Reusable components, DRY structure, minimal redundancy  
@@ -44,8 +56,8 @@ A full-stack web-based application to monitor server health, resource usage, and
 ## 🛢️ Database Schema
 
 Includes:
-- `servers`: Tracks each server's name, IP, location, status, created_at
-- `metrics`: Tracks RAM/CPU usage over time for each server
+- `servers`: Tracks each server's name, IP, location, status, created_at  
+- `metrics`: Tracks RAM/CPU usage over time for each server  
 - `alerts`: Can be extended for threshold-based event alerts
 
 ---
