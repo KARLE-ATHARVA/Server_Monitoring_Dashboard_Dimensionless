@@ -1,16 +1,28 @@
+# routes/alerts.py
+
+import os
+import requests
 from flask import Blueprint, jsonify
-from app.models import Alert
-from app import db
-from sqlalchemy import func
+from collections import Counter
 
 alerts_bp = Blueprint('alerts', __name__)
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
+
 @alerts_bp.route('/count', methods=['GET'])
 def get_alert_counts():
-    counts = (
-        db.session.query(Alert.level, func.count(Alert.id))
-        .group_by(Alert.level)
-        .all()
-    )
-    response = { level: count for level, count in counts }
-    return jsonify(response), 200
+    url = f"{SUPABASE_URL}/rest/v1/alerts"
+    headers = {
+        "apikey": SUPABASE_API_KEY,
+        "Authorization": f"Bearer {SUPABASE_API_KEY}",
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+        counts = Counter(alert["level"] for alert in data)
+        return jsonify(dict(counts)), 200
+    else:
+        return jsonify({"error": "Failed to fetch alerts"}), 500

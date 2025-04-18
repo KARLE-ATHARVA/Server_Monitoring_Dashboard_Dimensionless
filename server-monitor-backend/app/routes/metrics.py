@@ -1,24 +1,25 @@
+# routes/metrics.py
+
+import os
+import requests
 from flask import Blueprint, jsonify
-from app.models import Metric
 
 metrics_bp = Blueprint('metrics', __name__)
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
+
 @metrics_bp.route('/<int:server_id>', methods=['GET'])
 def get_server_metrics(server_id):
-    metrics = (
-        Metric.query.filter_by(server_id=server_id)
-        .order_by(Metric.timestamp.desc())
-        .limit(20)
-        .all()
-    )
-    response = [
-        {
-            "cpu": m.cpu,
-            "ram": m.ram,
-            "disk": m.disk,
-            "network_in": m.network_in,
-            "timestamp": m.timestamp.isoformat()
-        }
-        for m in metrics
-    ]
-    return jsonify(response), 200
+    url = f"{SUPABASE_URL}/rest/v1/metrics?server_id=eq.{server_id}&order=timestamp.desc&limit=20"
+    headers = {
+        "apikey": SUPABASE_API_KEY,
+        "Authorization": f"Bearer {SUPABASE_API_KEY}",
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        return jsonify(response.json())
+    else:
+        return jsonify({"error": "Failed to fetch metrics"}), 500
