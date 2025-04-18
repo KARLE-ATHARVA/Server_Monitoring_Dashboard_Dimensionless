@@ -1,22 +1,19 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from config import Config
-
-db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
-    db.init_app(app)
+
+    # Enable CORS for all domains on all routes
     CORS(app)
 
-    from .routes.alerts import alerts_bp
+    # Import and register your blueprints here
     from .routes.metrics import metrics_bp
-    from .routes.servers import server_bp  # ✅ using correct blueprint name
+    from .routes.servers import servers_bp
+    from .routes.alerts import alerts_bp
 
-    app.register_blueprint(alerts_bp, url_prefix='/api/alerts')
-    app.register_blueprint(metrics_bp, url_prefix='/api/metrics')
-    app.register_blueprint(server_bp, url_prefix='/api/servers')  # ✅ corrected blueprint registration
+    app.register_blueprint(metrics_bp, url_prefix="/api/metrics")
+    app.register_blueprint(servers_bp, url_prefix="/api/servers")
+    app.register_blueprint(alerts_bp, url_prefix="/api/alerts")
 
     return app
