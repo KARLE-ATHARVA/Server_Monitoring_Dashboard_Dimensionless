@@ -1,0 +1,17 @@
+.dashboard-container {
+    padding: 40px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafc;
+  }
+  
+  .top-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .side-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  

@@ -1,0 +1,48 @@
+.cpu-usage-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .cpu-usage-bar {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 6px;
+    margin: 8px 0 10px;
+    overflow: hidden;
+  }
+  
+  .cpu-usage-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+  }
+  
+  .cpu-usage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .cpu-usage-usage {
+    font-size: 16px;
+  }
+  
+  .cpu-usage-status .status-text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .description.big-comment {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 4px;
+  }
+  
+  .cpu-usage-container {
+    flex: 1;
+    min-width: 260px;
+  }
+  
