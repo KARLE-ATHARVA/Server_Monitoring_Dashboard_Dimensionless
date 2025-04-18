@@ -2,12 +2,12 @@ import os
 import requests
 from flask import Blueprint, jsonify
 
-server_bp = Blueprint('servers', __name__)  
+servers_bp = Blueprint('servers', __name__)  
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
 
-@server_bp.route("/", methods=["GET"])  
+@servers_bp.route("/", methods=["GET"])  # <- Same name here
 def get_servers():
     try:
         url = f"{SUPABASE_URL}/rest/v1/server"
