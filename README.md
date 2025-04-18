@@ -40,7 +40,9 @@ A full-stack web-based application to monitor server health, resource usage, and
 
 ## 🧱 Database Schema Diagram
 
-![Database Schema](./database.png)
+![Database Schema_1](./PostgreSQL_1.jpeg)
+![Database Schema_2](./PostgreSQL_2.jpeg)
+![Database Schema_3](./PostgreSQL_3.jpeg)
 
 ---
 
