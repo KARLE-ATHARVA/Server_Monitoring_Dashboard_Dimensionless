@@ -11,7 +11,7 @@ SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
 @metrics_bp.route("/", methods=["GET"])
 def get_metrics():
     try:
-        url = f"{SUPABASE_URL}/rest/v1/metrics"
+        url = f"{SUPABASE_URL}/rest/v1/metric"
         headers = {
             "apikey": SUPABASE_API_KEY,
             "Authorization": f"Bearer {SUPABASE_API_KEY}",

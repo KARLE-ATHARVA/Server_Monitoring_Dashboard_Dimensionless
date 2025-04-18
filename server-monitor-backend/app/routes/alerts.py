@@ -11,7 +11,7 @@ SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
 @alerts_bp.route("/", methods=["GET"])
 def get_alerts():
     try:
-        url = f"{SUPABASE_URL}/rest/v1/alerts"
+        url = f"{SUPABASE_URL}/rest/v1/alert"
         headers = {
             "apikey": SUPABASE_API_KEY,
             "Authorization": f"Bearer {SUPABASE_API_KEY}",
