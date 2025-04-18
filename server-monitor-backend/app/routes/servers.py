@@ -1,20 +1,29 @@
+import os
+import requests
 from flask import Blueprint, jsonify
-from app.models import Server
 
-servers_bp = Blueprint('servers', __name__)
+server_bp = Blueprint('servers', __name__)  
 
-@servers_bp.route('/', methods=['GET'])
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_API_KEY = os.getenv("SUPABASE_API_KEY")
+
+@server_bp.route("/", methods=["GET"])  
 def get_servers():
-    servers = Server.query.all()
-    response = [
-        {
-            "id": s.id,
-            "name": s.name,
-            "ip_address": s.ip_address,
-            "status": s.status,
-            "location": s.location,
-            "created_at": s.created_at.isoformat()
+    try:
+        url = f"{SUPABASE_URL}/rest/v1/server"
+        headers = {
+            "apikey": SUPABASE_API_KEY,
+            "Authorization": f"Bearer {SUPABASE_API_KEY}",
         }
-        for s in servers
-    ]
-    return jsonify(response), 200
+        response = requests.get(url, headers=headers)
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({
+                "error": "Supabase responded with non-200",
+                "status_code": response.status_code,
+                "text": response.text
+            }), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

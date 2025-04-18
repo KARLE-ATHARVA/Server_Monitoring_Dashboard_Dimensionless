@@ -13,10 +13,10 @@ def create_app():
 
     from .routes.alerts import alerts_bp
     from .routes.metrics import metrics_bp
-    from .routes.servers import servers_bp
+    from .routes.servers import server_bp  # ✅ using correct blueprint name
 
     app.register_blueprint(alerts_bp, url_prefix='/api/alerts')
     app.register_blueprint(metrics_bp, url_prefix='/api/metrics')
-    app.register_blueprint(servers_bp, url_prefix='/api/servers')
+    app.register_blueprint(server_bp, url_prefix='/api/servers')  # ✅ corrected blueprint registration
 
     return app
